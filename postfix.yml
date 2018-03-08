@@ -1,0 +1,11 @@
+---
+ #Postfix 
+ - name: Postfix  
+   hosts: mailservers
+   become: yes
+   pre_tasks:
+    - shell: echo "Begining to configure Postfix Server"
+   roles: 
+    - { role: postfix  }
+   post_tasks:
+    - shell: echo "Done with configuring Postfix Server"

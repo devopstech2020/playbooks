@@ -1,0 +1,11 @@
+---
+ #install basic packages reuired
+ - name: install basic  
+   hosts: mailservers
+   become: yes
+   pre_tasks:
+    - shell: echo "Begining to configure basic packages"
+   roles: 
+    - { role: basic }
+   post_tasks:
+    - shell: echo "Done with configuring basic packages"

@@ -1,0 +1,11 @@
+---
+#install basic packages
+ - name: install python
+   yum: 
+    name: "{{ python_version  }}"
+    state: latest
+ - name: install Devlopment tools
+   yum:
+    name: "{{ dt_pkg_name  }}"
+    state: latest
+        

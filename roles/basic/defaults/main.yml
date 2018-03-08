@@ -1,0 +1,4 @@
+---
+# defaults file for basic
+ python_version: "python-2.7.5-58.el7.x86_64"
+ dt_pkg_name: "@Development Tools" 

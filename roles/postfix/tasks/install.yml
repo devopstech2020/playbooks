@@ -1,0 +1,31 @@
+---
+# tasks file for postfix
+ - name: Ensure Postfix is installed
+   package: 
+     name: "{{ postfix_package_name  }}" 
+     state: present
+
+ - name: Update Postfix main Configuration
+   lineinfile:
+    dest: "{{ postfix_config_file }}"
+    line: "{{ item.name }} = {{ item.value }}"
+    regexp: "^{{ item.name }} ="
+   with_items:
+    - name: inet_interfaces
+      value: "{{ postfix_inet_interfaces }}"
+    - name: inet_protocols
+      value: "{{ postfix_inet_protocols }}"
+    - name: smtpd_tls_cert_file
+      value: "{{ smtpd_tls_cert_file  }}"   
+    - name: smtpd_tls_key_file
+      value: "{{ smtpd_tls_key_file }}"   
+   notify: restart postfix
+
+ - name: Update Postfix master Configuration
+   template: src=master.cf.j2 dest=/etc/postfix/master.cf mode=0644  
+   
+ - name: Ensure postfix is started and enabled at boot.
+   service:
+    name: postfix
+    state: "{{ postfix_service_state }}"
+    enabled: "{{ postfix_service_enabled }}"             

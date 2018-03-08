@@ -1,0 +1,10 @@
+---
+#name: create filed
+ - file:
+    path: /etc/pki/tls/certs/taskbucks.info.cert
+    state: touch
+    mode: "u=rw,g=r,o=r"        
+ - file:
+    path: /etc/pki/tls/private/taskbucks.info.key
+    state: touch
+    mode: "u=rw,g=r,o=r"        

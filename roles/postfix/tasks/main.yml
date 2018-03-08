@@ -1,0 +1,6 @@
+---
+#include postfix
+ - include: create.yml
+ - include: install.yml
+ - include: dkim.yml
+ - include: configuredkim.yml 

@@ -1,0 +1,25 @@
+---
+# defaults file for postfix
+ postfix_package_name: postfix-2.10.1-6.el7.x86_64
+ postfix_config_file: /etc/postfix/main.cf
+ postfix_master_file: /etc/postfix/master.cf
+ postfix_service_state: started
+ postfix_service_enabled: yes
+ postfix_inet_interfaces: localhost
+ postfix_inet_protocols: all
+ smtpd_tls_cert_file: /etc/pki/tls/certs/taskbucks.info.cert
+ smtpd_tls_key_file: /etc/pki/tls/private/taskbucks.info.key
+ postfix_port: 625
+
+
+# default for epal repositories
+ epel_repo_url: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
+ epel_repo_gpg_key_url: "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}"
+ epel_repofile_path: "/etc/yum.repos.d/epel.repo"
+
+
+#default setting for open dkim
+ domain: test.com
+ dkimuser: opendkim
+ dkimgroup: opendkim 
+ dkimkeydirectory: /etc/opendkim/keys
