@@ -1,0 +1,11 @@
+---
+ #Postfix 
+ - name: mysql
+   hosts: mailservers
+   become: yes
+   pre_tasks:
+    - shell: echo "Begining to configure Mysql"
+   roles: 
+    - mysql
+   post_tasks:
+    - shell: echo "Done with configuring Mysql"

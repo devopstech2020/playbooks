@@ -3,3 +3,4 @@
 # - import_playbook: basic.yml
 # - import_playbook: postfix.yml
  - import_playbook: www.yml
+ - import_playbook: mysql.yml
