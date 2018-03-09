@@ -1,0 +1,8 @@
+---
+# tasks file for java
+# - name: yum_command 
+ - name: install openjdk1.8 
+   yum: 
+     name: "{{ java_version  }}" 
+     state: latest
+#   when: pkg.results[0].yumstate == 'not installed'

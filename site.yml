@@ -1,5 +1,5 @@
 ---
 #include all the yml files
- - import_playbook: basic.yml
- - import_playbook: postfix.yml
-# - import_playbook: www.yml
+# - import_playbook: basic.yml
+# - import_playbook: postfix.yml
+ - import_playbook: www.yml

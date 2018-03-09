@@ -1,6 +1,6 @@
 ---
 # defaults file for postfix
- postfix_package_name: postfix-2.10.1-6.el7.x86_64
+ postfix_package_name: postfix
  postfix_config_file: /etc/postfix/main.cf
  postfix_master_file: /etc/postfix/master.cf
  postfix_service_state: started

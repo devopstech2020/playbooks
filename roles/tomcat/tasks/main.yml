@@ -1,0 +1,37 @@
+---
+# tasks file for tomcat
+ - name: Install Java 1.7
+   yum: name=java
+
+ - name: add group "tomcat"
+   group: name=tomcat
+
+ - file:
+     path: /usr/local/tomcat
+     state: directory
+     mode: 0755
+
+ - name: add user tomcat
+   user: name=tomcat group=tomcat home=/usr/local/tomcat createhome=no
+
+ - name: Download tomcat
+   get_url: url=http://archive.apache.org/dist/tomcat/tomcat-8/v{{tomcat_version}}/bin/apache-tomcat-{{tomcat_version}}.tar.gz
+           dest=/tmp/apache-tomcat-{{tomcat_version}}.tar.gz 
+
+ - name: Extract tomcat
+   unarchive: 
+     src: /tmp/apache-tomcat-{{tomcat_version}}.tar.gz 
+     dest: /usr/local/tomcat/
+     remote_src: yes   
+ 
+ - name: Change tomcat directory permissions
+   file: path=/usr/local/tomcat/apache-tomcat-{{tomcat_version}} owner=tomcat group=tomcat state=directory recurse=yes
+
+ - name: Add tomcat systemd unit file
+   template: src=tomcat_service.j2 dest=/usr/lib/systemd/system/tomcat.service owner=root group=root
+
+ - name: Start tomcat
+   service: name=tomcat state=restarted enabled=yes
+
+ - name: Wait for tomcat started
+   wait_for: port={{http_port}}

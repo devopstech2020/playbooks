@@ -1,0 +1,12 @@
+---
+#configure opendkim
+ - file: path=/etc/opendkim/keys/{{ domain  }} state=directory owner={{ dkimuser  }} group={{ dkimgroup  }} mode="u=rw,g=r,o=r"
+ - name: run command to generate key
+   command: opendkim-genkey -d { domain  } -s default
+   args: chdir={{ dkimkeydirectory }} 
+ 
+ - name: copy keyTable file
+   template: src=KeyTable.j2 dest=/etc/postfix/master.cf mode=0644 
+
+ - name: copy SigningTable file
+   template: src=SigningTable.j2 dest=/etc/postfix/master.cf mode=0644 

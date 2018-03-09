@@ -1,0 +1,11 @@
+---
+ #Postfix 
+ - name: javaandtomcat
+   hosts: mailservers
+   become: yes
+   pre_tasks:
+    - shell: echo "Begining to configure javaandtomcat"
+   roles: 
+    - tomcat
+   post_tasks:
+    - shell: echo "Done with configuring javaandtomcat"

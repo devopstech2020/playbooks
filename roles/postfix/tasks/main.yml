@@ -1,6 +1,7 @@
 ---
 #include postfix
- - include: create.yml
- - include: install.yml
- - include: dkim.yml
- - include: configuredkim.yml 
+ - include: installPostfix.yml
+ - include: createKeyFiles.yml
+ - include: installEpel.yml
+ - include: installOpendkim.yml
+ - include: configureOpendim.yml    
